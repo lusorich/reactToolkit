@@ -5,8 +5,9 @@ module.exports = {
   entry: path.join(__dirname, 'src', 'index.tsx'),
   mode: 'development',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist'),
     filename: 'app.bundle.js',
+    publicPath: "/",
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -16,6 +17,9 @@ module.exports = {
       template: path.join(__dirname, 'public', 'index.html'),
     }),
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {
