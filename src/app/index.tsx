@@ -28,9 +28,7 @@ const Item = styled(Paper)(() => ({
   padding: '1rem',
 }));
 
-const getMenuList = (): Array<
-  ReactJSXElement
-> => {
+const getMenuList = (): Array<ReactJSXElement> => {
   let res = [];
 
   for (let i = 0; i < routePathnames.length; i++) {
@@ -50,19 +48,20 @@ const getMenuList = (): Array<
 const App = () => {
   return (
     <MainAppContainer maxWidth='xl'>
-      <BrowserRouter>
-        <Header menuList={getMenuList()} />
-        <Routes>
-          <Route path='/' element={<MainPage />}>
-            <Route path='taskboards' element={<TaskBoardsPage />}>
-              <Route path=':taskboardId' element={<TaskBoardPage />} />
+        <BrowserRouter>
+          <Header menuList={getMenuList()} />
+          <Routes>
+            <Route path='/' element={<MainPage />}>
+              <Route path='taskboards' element={<TaskBoardsPage />} />
+              <Route
+                path='taskboards/:taskboardId'
+                element={<TaskBoardPage />}
+              />
+              <Route path='tasks' element={<TasksPage />} />
+              <Route path='tasks/:taskId' element={<TaskPage />} />
             </Route>
-            <Route path='tasks' element={<TasksPage />}>
-              <Route path=':taskId' element={<TaskPage />} />
-            </Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
     </MainAppContainer>
   );
 };

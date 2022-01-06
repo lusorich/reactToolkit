@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { taskBoardsReducer } from 'entities/TaskBoard/taskboards-slice';
 
 export const store = configureStore({
   reducer: {
-    tasks: tasksReducer,
-    taskBoards: taskBoardsReducer,
+    // tasks: tasksReducer,
+    taskBoards: taskBoardsReducer
   },
 });
 

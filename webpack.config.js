@@ -19,6 +19,14 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true,
+    proxy: [
+      {
+        context: ["/api"],
+        target: "http://localhost:3003",
+        changeOrigin: true,
+        pathRewrite: { "^/api": "" },
+      },
+    ],
   },
   module: {
     rules: [
