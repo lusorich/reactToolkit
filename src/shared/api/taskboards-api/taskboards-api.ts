@@ -1,6 +1,6 @@
 import type { AxiosPromise } from "axios";
+import { TaskBoards } from 'entities/TaskBoard/models';
 import { api } from "../base";
-import type { TaskBoards } from "../models";
 
 const BASE_URL = "/taskboards"
 

@@ -46,14 +46,17 @@
   "taskBoards": [
     {
       "id": 1,
+      "label": "first card",
       "description": "Tasks for the year"
     },
     {
       "id": 2,
+      "label": "second card",
       "description": "Monthly tasks"
     },
     {
       "id": 3,
+      "label": "third card",
       "description": "Tasks during the day"
     }
   ]
