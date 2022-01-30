@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { taskBoardsAPI } from 'shared/api/taskboards-api/taskboards-api';
 import { TaskBoards } from './models';
 
 export enum TaskBoardsActionTypes {
@@ -16,8 +15,8 @@ export enum StatusTypes {
 export const fetchTaskBoards = createAsyncThunk<TaskBoards>(
   `${TaskBoardsActionTypes.SET_TASKBOARDS}`,
   async () => {
-    const response = await taskBoardsAPI.getTaskBoards();
-    return response.data;
+    // const response = await taskBoardsAPI.getTaskBoards();
+    // return response.data;
   }
 );
 

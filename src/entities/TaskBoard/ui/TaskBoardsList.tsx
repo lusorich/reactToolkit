@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { TaskBoards } from '../models';
 
 interface TaskBoardsListI {
-  taskBoards: TaskBoards;
+  taskBoards?: TaskBoards;
 }
 
 const TaskBoardsList = React.memo(({ taskBoards }: TaskBoardsListI) => {

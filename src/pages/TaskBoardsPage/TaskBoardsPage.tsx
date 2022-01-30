@@ -1,32 +1,15 @@
-import React, { useMemo, useRef } from 'react';
-import {
-  fetchTaskBoards,
-  refreshTaskBoards,
-} from 'entities/TaskBoard/taskboards-slice';
-import { useSelector } from 'react-redux';
-import { RootState } from 'app/store/store';
-import useDispatchAction from 'app/hooks/useDispatchAction';
+import React from 'react';
 import { TaskBoardsList } from 'entities/TaskBoard/ui/TaskBoardsList';
 import _ from 'lodash';
+import { useGetTaskBoardsQuery } from 'entities/TaskBoard/api/taskBoardsApi';
 
 export const TaskBoardsPage = () => {
-  useDispatchAction({
-    asyncAction: fetchTaskBoards(),
-    cleanAction: refreshTaskBoards(),
-  });
-  const { status, taskBoards } = useSelector(
-    (state: RootState) => state.taskBoards
-  );
-  const taskBoardsRef = useRef({
-    current: taskBoards,
-  });
-  if (!_.isEqual(taskBoards, taskBoardsRef.current)) {
-    taskBoardsRef.current = taskBoards;
-  }
-  const taskBoardsMemo = useMemo(() => taskBoards, [taskBoardsRef.current]);
+  const { data: taskBoards, error, isLoading } = useGetTaskBoardsQuery();
   return (
     <>
-      <TaskBoardsList taskBoards={taskBoardsMemo} />
+      {isLoading && <div>Loading...</div>}
+      {error && <div>error...</div>}
+      <TaskBoardsList taskBoards={taskBoards} />
     </>
   );
 };

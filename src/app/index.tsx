@@ -28,18 +28,21 @@ const Item = styled(Paper)(() => ({
   padding: '1rem',
 }));
 
-const getMenuList = (): Array<ReactJSXElement> => {
+const getMenuList = (): Array<{ id: number; component: ReactJSXElement }> => {
   let res = [];
 
   for (let i = 0; i < routePathnames.length; i++) {
     if (routePathnames[i].mainPathname) {
       continue;
     }
-    res.push(
-      <Link to={`/${routePathnames[i].path}`}>
-        <Item>{routePathnames[i].description}</Item>
-      </Link>
-    );
+    res.push({
+      id: i,
+      component: (
+        <Link to={`/${routePathnames[i].path}`}>
+          <Item>{routePathnames[i].description}</Item>
+        </Link>
+      ),
+    });
   }
 
   return res;
@@ -48,20 +51,17 @@ const getMenuList = (): Array<ReactJSXElement> => {
 const App = () => {
   return (
     <MainAppContainer maxWidth='xl'>
-        <BrowserRouter>
-          <Header menuList={getMenuList()} />
-          <Routes>
-            <Route path='/' element={<MainPage />}>
-              <Route path='taskboards' element={<TaskBoardsPage />} />
-              <Route
-                path='taskboards/:taskboardId'
-                element={<TaskBoardPage />}
-              />
-              <Route path='tasks' element={<TasksPage />} />
-              <Route path='tasks/:taskId' element={<TaskPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Header menuList={getMenuList()} />
+        <Routes>
+          <Route path='/' element={<MainPage />}>
+            <Route path='taskboards' element={<TaskBoardsPage />} />
+            <Route path='taskboards/:taskboardId' element={<TaskBoardPage />} />
+            <Route path='tasks' element={<TasksPage />} />
+            <Route path='tasks/:taskId' element={<TaskPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </MainAppContainer>
   );
 };

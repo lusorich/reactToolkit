@@ -1,11 +1,12 @@
 {
-  "name": "reactToolkit",
+  "name": "reacttoolkit",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "type-check": "tsc --noEmit",
     "dev": "webpack serve --mode development --hot --open --port 3000",
+    "db": "json-server --watch src/shared/db/db.json --port 3003",
     "type-check:watch": "npm run type-check -- --watch",
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",

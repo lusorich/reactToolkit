@@ -11,13 +11,13 @@ const Item = styled(Paper)(() => ({
 }));
 
 type HeaderPropsType = {
-  menuList: Array<ReactJSXElement>
-}
+  menuList: Array<{ id: number; component: ReactJSXElement }>;
+};
 
 const Header = ({ menuList }: HeaderPropsType) => {
   const items = menuList?.map((menuItem) => (
-    <Grid item xs={5}>
-      {menuItem}
+    <Grid item xs={5} key={menuItem.id}>
+      {menuItem.component}
     </Grid>
   ));
   return (
