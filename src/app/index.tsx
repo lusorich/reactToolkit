@@ -1,23 +1,19 @@
 import React from 'react';
 import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  LinkProps,
+  BrowserRouter, Routes, Route, Link,
 } from 'react-router-dom';
-import { TaskBoardsPage } from 'pages/TaskBoardsPage/TaskBoardsPage';
-import { TasksPage } from 'pages/TasksPage/TasksPage';
-import { MainPage } from 'pages/MainPage/MainPage';
-import { TaskPage } from 'pages/TaskPage/TaskPage';
-import { TaskBoardPage } from 'pages/TaskBoardPage/TaskBoardPage';
-import { Header } from 'shared/ui/Header/Header';
+import TaskBoardsPage from 'pages/TaskBoardsPage/TaskBoardsPage';
+import TasksPage from 'pages/TasksPage/TasksPage';
+import MainPage from 'pages/MainPage/MainPage';
+import TaskPage from 'pages/TaskPage/TaskPage';
+import TaskBoardPage from 'pages/TaskBoardPage/TaskBoardPage';
+import Header from 'shared/ui/Header/Header';
 import './styles/global-styles.css';
 import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
-import { routePathnames } from './routes';
 import Paper from '@mui/material/Paper';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+import { routePathnames } from './routes';
 
 const MainAppContainer = styled(Container)(() => ({
   marginTop: '1rem',
@@ -29,9 +25,9 @@ const Item = styled(Paper)(() => ({
 }));
 
 const getMenuList = (): Array<{ id: number; component: ReactJSXElement }> => {
-  let res = [];
+  const res = [];
 
-  for (let i = 0; i < routePathnames.length; i++) {
+  for (let i = 0; i < routePathnames.length; i += 1) {
     if (routePathnames[i].mainPathname) {
       continue;
     }
@@ -48,22 +44,22 @@ const getMenuList = (): Array<{ id: number; component: ReactJSXElement }> => {
   return res;
 };
 
-const App = () => {
+function App() {
   return (
-    <MainAppContainer maxWidth='xl'>
+    <MainAppContainer maxWidth="xl">
       <BrowserRouter>
         <Header menuList={getMenuList()} />
         <Routes>
-          <Route path='/' element={<MainPage />}>
-            <Route path='taskboards' element={<TaskBoardsPage />} />
-            <Route path='taskboards/:taskboardId' element={<TaskBoardPage />} />
-            <Route path='tasks' element={<TasksPage />} />
-            <Route path='tasks/:taskId' element={<TaskPage />} />
+          <Route path="/" element={<MainPage />}>
+            <Route path="taskboards" element={<TaskBoardsPage />} />
+            <Route path="taskboards/:taskboardId" element={<TaskBoardPage />} />
+            <Route path="tasks" element={<TasksPage />} />
+            <Route path="tasks/:taskId" element={<TaskPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
     </MainAppContainer>
   );
-};
+}
 
-export { App };
+export default App;

@@ -8,9 +8,7 @@ export const taskBoardsApi = createApi({
   endpoints: (build) => ({
     getTaskBoards: build.query<TaskBoards, void>({
       query: () => 'taskboards',
-      transformResponse: (rawResult: { result: TaskBoards }, meta) => {
-        return rawResult.result;
-      },
+      transformResponse: (rawResult: { result: TaskBoards }) => rawResult.result,
     }),
   }),
 });

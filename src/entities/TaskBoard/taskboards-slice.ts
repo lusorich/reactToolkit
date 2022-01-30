@@ -1,4 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-shadow */
+import { createSlice } from '@reduxjs/toolkit';
 import { TaskBoards } from './models';
 
 export enum TaskBoardsActionTypes {
@@ -11,14 +14,6 @@ export enum StatusTypes {
   FULLFILLED = 'fulfilled',
   REJECTED = 'rejected',
 }
-
-export const fetchTaskBoards = createAsyncThunk<TaskBoards>(
-  `${TaskBoardsActionTypes.SET_TASKBOARDS}`,
-  async () => {
-    // const response = await taskBoardsAPI.getTaskBoards();
-    // return response.data;
-  }
-);
 
 type InitialState = {
   taskBoards: TaskBoards | [];
@@ -36,20 +31,6 @@ const taskBoardsSlice = createSlice({
   initialState,
   reducers: {
     refreshTaskBoards: () => initialState,
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchTaskBoards.pending, (state, action) => {
-      state.taskBoards = [];
-      state.status = StatusTypes.PENDING;
-    });
-    builder.addCase(fetchTaskBoards.fulfilled, (state, action) => {
-      state.taskBoards = action.payload;
-      state.status = StatusTypes.FULLFILLED;
-    });
-    builder.addCase(fetchTaskBoards.rejected, (state, action) => {
-      state.taskBoards = [];
-      state.status = StatusTypes.REJECTED;
-    });
   },
 });
 

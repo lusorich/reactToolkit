@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const TaskPage = () => {
-    return(
-        <div>TaskPage №</div>
-    )
-}
+const TaskPage = () => (
+  <div>TaskPage №</div>
+);
+
+export default TaskPage;

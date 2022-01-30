@@ -7,10 +7,17 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'app.bundle.js',
-    publicPath: "/",
+    publicPath: '/',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.json', 'jsx'],
+    alias: {
+      app: path.resolve(__dirname, 'src/app/'),
+      entities: path.resolve(__dirname, 'src/entities/'),
+      features: path.resolve(__dirname, 'src/features/'),
+      pages: path.resolve(__dirname, 'src/pages/'),
+      shared: path.resolve(__dirname, 'src/shared/'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -21,10 +28,10 @@ module.exports = {
     historyApiFallback: true,
     proxy: [
       {
-        context: ["/api"],
-        target: "http://localhost:3003",
+        context: ['/api'],
+        target: 'http://localhost:3003',
         changeOrigin: true,
-        pathRewrite: { "^/api": "" },
+        pathRewrite: { '^/api': '' },
       },
     ],
   },
@@ -35,12 +42,12 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         resolve: {
-          extensions: ['.ts', '.tsx', '.js', '.json'],
+          extensions: ['.ts', '.tsx', '.js', '.jsx'],
         },
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },

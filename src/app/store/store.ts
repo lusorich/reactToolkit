@@ -9,8 +9,7 @@ export const store = configureStore({
     taskBoards: taskBoardsReducer,
     [taskBoardsApi.reducerPath]: taskBoardsApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(taskBoardsApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(taskBoardsApi.middleware),
 });
 setupListeners(store.dispatch);
 export type RootState = ReturnType<typeof store.getState>;

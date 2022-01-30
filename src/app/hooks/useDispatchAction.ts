@@ -1,6 +1,6 @@
-import { AnyAction, AsyncThunkAction } from '@reduxjs/toolkit';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { AnyAction, AsyncThunkAction } from '@reduxjs/toolkit';
 
 interface useDispatchActionI {
   action?: AnyAction;
@@ -28,7 +28,7 @@ const useDispatchAction = ({
       dispatch(asyncAction);
     }
     return () => {
-      dispatch(cleanAction || "");
+      dispatch(cleanAction || '');
     };
   }, []);
 };

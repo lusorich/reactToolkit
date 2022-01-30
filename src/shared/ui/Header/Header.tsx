@@ -1,14 +1,6 @@
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import React from 'react';
-import { Link, LinkProps } from 'react-router-dom';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
-
-const Item = styled(Paper)(() => ({
-  textAlign: 'center',
-  padding: '1rem',
-}));
 
 type HeaderPropsType = {
   menuList: Array<{ id: number; component: ReactJSXElement }>;
@@ -23,9 +15,9 @@ const Header = ({ menuList }: HeaderPropsType) => {
   return (
     <Grid
       container
-      direction='row'
-      justifyContent='center'
-      alignItems='center'
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
       spacing={5}
     >
       {items}
@@ -33,4 +25,4 @@ const Header = ({ menuList }: HeaderPropsType) => {
   );
 };
 
-export { Header };
+export default Header;

@@ -1,9 +1,8 @@
 import React from 'react';
-import { TaskBoardsList } from 'entities/TaskBoard/ui/TaskBoardsList';
-import _ from 'lodash';
+import TaskBoardsList from 'entities/TaskBoard/ui/TaskBoardsList';
 import { useGetTaskBoardsQuery } from 'entities/TaskBoard/api/taskBoardsApi';
 
-export const TaskBoardsPage = () => {
+function TaskBoardsPage() {
   const { data: taskBoards, error, isLoading } = useGetTaskBoardsQuery();
   return (
     <>
@@ -12,4 +11,6 @@ export const TaskBoardsPage = () => {
       <TaskBoardsList taskBoards={taskBoards} />
     </>
   );
-};
+}
+
+export default TaskBoardsPage;
