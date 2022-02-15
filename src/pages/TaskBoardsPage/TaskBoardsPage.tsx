@@ -1,5 +1,5 @@
 import React from 'react';
-import TaskBoardsList from 'entities/TaskBoard/ui/TaskBoardsList';
+import TaskBoardsList from 'entities/TaskBoard/ui/TaskBoardsCardList';
 import { useGetTaskBoardsQuery } from 'entities/TaskBoard/api/taskBoardsApi';
 
 function TaskBoardsPage() {
@@ -8,7 +8,7 @@ function TaskBoardsPage() {
     <>
       {isLoading && <div>Loading...</div>}
       {error && <div>error...</div>}
-      <TaskBoardsList taskBoards={taskBoards} />
+      {taskBoards && <TaskBoardsList taskBoards={taskBoards} />}
     </>
   );
 }

@@ -19,6 +19,7 @@ const Header = ({ menuList }: HeaderPropsType) => {
       justifyContent="center"
       alignItems="center"
       spacing={5}
+      marginBottom={10}
     >
       {items}
     </Grid>

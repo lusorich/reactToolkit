@@ -8,7 +8,6 @@ export const taskBoardsApi = createApi({
   endpoints: (build) => ({
     getTaskBoards: build.query<TaskBoards, void>({
       query: () => 'taskboards',
-      transformResponse: (rawResult: { result: TaskBoards }) => rawResult.result,
     }),
   }),
 });
