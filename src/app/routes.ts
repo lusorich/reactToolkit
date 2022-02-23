@@ -5,12 +5,12 @@ export enum Pathname {
   'tasks' = 'tasks',
 }
 
-type RoutePathname = {
+export type RoutePathname = {
   path: Pathname.index | Pathname.taskboards | Pathname.tasks;
   mainPathname: boolean;
   description: string;
 };
-type RoutePathnames = Array<RoutePathname>;
+export type RoutePathnames = Array<RoutePathname>;
 
 export const routePathnames: RoutePathnames = [
   {
